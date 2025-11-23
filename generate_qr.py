@@ -5,7 +5,8 @@ import qrcode
 DB_NAME = "air_reservation.db"
 
 # 🔹 Change this later to your ngrok/public URL if you want
-BASE_URL = "http://127.0.0.1:5000/verify"
+BASE_URL = "https://airline-reservation-project-12ch.onrender.com/verify/"
+
 
 QR_FOLDER = os.path.join("static", "qr")
 os.makedirs(QR_FOLDER, exist_ok=True)
@@ -22,3 +23,4 @@ for (ticket_num,) in rows:
     file_path = os.path.join(QR_FOLDER, f"{ticket_num}.png")
     img.save(file_path)
     print("Generated QR:", file_path)
+
