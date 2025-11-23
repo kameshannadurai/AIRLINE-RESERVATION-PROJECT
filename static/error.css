@@ -1,0 +1,24 @@
+.lo{
+    background-image: url(./WhatsApp\ Image\ 2025-10-10\ at\ 11.12.10_94a308a2.jpg);
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    padding-top:  100px;
+    background-position: fixed;
+    
+    
+
+}
+.container {
+    position: absolute;
+    background-color: white;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    
+}

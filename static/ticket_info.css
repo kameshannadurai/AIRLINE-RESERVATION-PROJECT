@@ -1,0 +1,78 @@
+/* Background wrapper */
+.nice {
+    background-image: url("./WhatsApp Image 2025-10-10 at 11.12.10_94a308a2.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main content box */
+.container {
+    max-width: 450px;
+    width: 90%;
+    padding: 25px;
+    background-color: white;
+    border-radius: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Heading styles */
+h1 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Each ticket detail row */
+ul li {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: left;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive for small screens */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    ul li {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,143 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width:450px ;
+  width: 90%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  
+  
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.menu {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.menu button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-section {
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+input, select {
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+.container>h1{
+    text-transform: uppercase;
+}
+.container>img{
+
+    height: 150px;
+
+
+}
+.container{
+    display:block;
+    justify-content: center;
+    align-items: center;
+
+}
+.hi{
+  
+    background-image: url(./WhatsApp\ Image\ 2025-10-10\ at\ 11.12.10_94a308a2.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.kam{
+    position: absolute;
+    top: 0;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    color:black;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.kam>img{
+    height: 80px;
+    margin-left: 20px;
+    border-radius: 50%;
+}
+.kam>ul{
+    list-style: none;
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    gap: 20px;
+    text-transform: uppercase;
+}
+.alert-success {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  text-align: center;
+}
+.alert-success {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  text-align: center;
+}
+.alert-info {
+  background-color: #17a2b8;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  text-align: center;
+}

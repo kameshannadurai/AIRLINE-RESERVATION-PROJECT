@@ -1,0 +1,67 @@
+/* Success container */
+.container {
+    
+    max-width: 450px;
+    width: 90%;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+.nice{
+    
+    background-image: url(./WhatsApp\ Image\ 2025-10-10\ at\ 11.12.10_94a308a2.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 20px;
+}
+
+ul li {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.alert-success {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+body {
+    background-color: #f4f4f4;
+}
