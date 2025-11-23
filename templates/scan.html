@@ -57,17 +57,31 @@
         console.log("Scanned:", decodedText);
         messageEl.textContent = "QR detected! Redirecting…";
 
-        // If QR is only ticket number (e.g., "TKT2000"), build URL ourselves
-        let url = decodedText.trim();
-        if (!url.startsWith("http")) {
-            // treat decoded text as ticket number
-            url = "/verify/" + encodeURIComponent(url);
+        let text = decodedText.trim();
+        let ticket;
+
+        // If it's a full URL (maybe from old localhost QR), extract last path part
+        if (text.startsWith("http://") || text.startsWith("https://")) {
+            try {
+                const u = new URL(text);
+                const parts = u.pathname.split("/").filter(Boolean);
+                ticket = parts[parts.length - 1];   // last part after /verify/
+            } catch (e) {
+                // if URL parsing fails, just use the whole text
+                ticket = text;
+            }
+        } else {
+            // not a URL → treat whole text as ticket number
+            ticket = text;
         }
+
+        // Always redirect INSIDE the current site
+        const url = "/verify/" + encodeURIComponent(ticket);
 
         if (window.scanner) {
             window.scanner.clear();
         }
-        window.location.href = url;  // now always goes to /verify/....
+        window.location.href = url;
     }
 
     function onScanFailure(error) {
@@ -90,5 +104,7 @@
 </script>
 
 
+
 </body>
 </html>
+
