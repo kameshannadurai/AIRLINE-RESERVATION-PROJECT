@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAMMA OORU AIRLINES</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='air1.css') }}">
+  <link rel="stylesheet" href="/static/air1.css">
+</head>
+<body>
+<div class="kam">
+  <img src="{{ url_for('static', filename='logo.jpg') }}" alt="">
+  <h1>NAMMA OORU AIRLINES</h1>
+</div>
+
+<div class="hi">
+  <div class="container">
+    <img src="{{ url_for('static', filename='logo.jpg') }}" alt="">
+    <h1>namma ooru airlines</h1>
+
+    <div class="menu">
+      <button onclick="showSection('passenger')">Passenger</button>
+      <button onclick="showSection('flight')">Flights</button>
+      <button onclick="showSection('ticket')">Tickets</button>
+      <button onclick="showSection('plane')">Plane</button>
+    </div>
+
+
+    <!-- Passenger Form -->
+    <div class="form-section" id="passenger">
+      <h2>Passenger Form</h2>
+      <form action="/add_passenger" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" placeholder="Enter your name" required><br>
+        <label>Date of Birth:</label>
+        <input type="date" name="dob" required><br>
+        <label>Phone Number:</label>
+        <input type="text" name="phone" placeholder="Enter your phone number" required><br>
+        <label>Passenger ID:</label>
+        <input type="text" name="passenger_id" placeholder="2412" required><br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- Flight Form -->
+    <div class="form-section" id="flight">
+      <h2>Flight Form</h2>
+      <form action="/add_flight" method="POST">
+        <label for="">Flight_ID</label>
+        <input type="text" name="flight_id" placeholder="Enter your flight ID" required><br>
+        <label for="">Terminal</label>
+        <input type="text" name="terminal" placeholder="Enter your boarding Terminal" required><br>
+        <label for="">Ticket</label>
+        <input type="text" name="ticket" placeholder="Enter Ticket" required><br>
+        <label for="">Flight no</label>
+        <input type="number" name="num_flights" placeholder="Enter Number of Flight" required><br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    
+   <!-- Ticket Lookup Section -->
+<div class="form-section" id="ticket">
+  <h2>Check Flight Details</h2>
+  
+<form action="/ticket_info" method="POST">
+  <label>Ticket Number</label>
+  <input type="text" name="ticket_num" required>
+
+  <label>Seat Number</label>
+  <input type="text" name="seat_num" required>
+
+  <button type="submit">Show My Flight Details</button>
+</form>
+
+</div>
+
+
+
+    <!-- Plane Form -->
+    <div class="form-section" id="plane">
+      <h2>Plane Form</h2>
+      <form action="/add_plane" method="POST">
+        <label>Arrival Time:</label>
+        <input type="time" name="arrival" required><br>
+        <label>Departure Time:</label>
+        <input type="time" name="departure" required><br>
+        <label>Plane Number:</label>
+        <input type="text" name="plane_num" placeholder="Enter Your Plane Number" required><br>
+        <label>Seats:</label>
+        <input type="number" name="seats" placeholder="Enter Seats" required><br>
+      
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+        <a href="/scan" style="text-decoration:none;">
+  <button style="margin-top:15px; padding:12px; font-size:18px; width:100%; background:#28a745; border-radius:10px;">
+    📷 Scan Boarding Pass
+  </button>
+</a>
+
+
+  </div>
+  
+</div>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.form-section').forEach(section => section.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+showSection('passenger');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Scan Boarding Pass QR</title>
+
+    <!-- Local QR Scanner Library (must exist in /static/) -->
+    <script src="{{ url_for('static', filename='html5-qrcode.min.js') }}"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+        }
+        h1 { margin-top: 20px; }
+        #reader {
+            width: 340px;
+            height: 340px;
+            margin: 20px auto;
+            border: 2px dashed #444;
+            background: #fff;
+        }
+        #message {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        a button {
+            margin-top: 15px;
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        a button:hover {
+            background:#0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>📷 Scan Your Boarding Pass</h1>
+<p>Point your ticket QR towards the camera.</p>
+
+<div id="reader"></div>
+<div id="message"></div>
+
+<a href="/"><button>Back to Home</button></a>
+
+<script>
+    const messageEl = document.getElementById("message");
+
+    function onScanSuccess(decodedText, decodedResult) {
+        console.log("Scanned:", decodedText);
+        messageEl.textContent = "QR detected! Redirecting…";
+
+        // If QR is only ticket number (e.g., "TKT2000"), build URL ourselves
+        let url = decodedText.trim();
+        if (!url.startsWith("http")) {
+            // treat decoded text as ticket number
+            url = "/verify/" + encodeURIComponent(url);
+        }
+
+        if (window.scanner) {
+            window.scanner.clear();
+        }
+        window.location.href = url;  // now always goes to /verify/....
+    }
+
+    function onScanFailure(error) {
+        // ignore continuous scan errors
+    }
+
+    window.addEventListener("load", function() {
+        if (!window.Html5QrcodeScanner) {
+            messageEl.textContent = "⚠ QR library not loaded. Check static/html5-qrcode.min.js.";
+            return;
+        }
+
+        const scannerConfig = { fps: 10, qrbox: 250 };
+        window.scanner = new Html5QrcodeScanner("reader", scannerConfig, false);
+        window.scanner.render(onScanSuccess, onScanFailure);
+
+        console.log("Scanner initialized");
+        messageEl.textContent = "If you don't see camera, allow camera permission in the browser.";
+    });
+</script>
+
+
+</body>
+</html>

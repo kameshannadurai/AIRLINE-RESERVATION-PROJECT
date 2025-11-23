@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>QR Ticket Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+        }
+        .box {
+            background: white;
+            width: 50%;
+            margin: 50px auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px gray;
+            position: relative;
+        }
+        .success {
+            color: #1eaa4b;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .fail {
+            color: #e53935;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        ul {
+            text-align:left;
+            margin:20px;
+            padding-left: 0;
+            list-style: none;
+        }
+        li {
+            padding: 5px 0;
+        }
+        button {
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background:#0056b3;
+        }
+
+        /* 🔔 Animations */
+
+        /* Error shake */
+        @keyframes shake {
+            0%   { transform: translateX(0); }
+            20%  { transform: translateX(-8px); }
+            40%  { transform: translateX(8px); }
+            60%  { transform: translateX(-6px); }
+            80%  { transform: translateX(6px); }
+            100% { transform: translateX(0); }
+        }
+        .shake-error {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        /* Success pop */
+        @keyframes pop {
+            0%   { transform: scale(0.9); box-shadow: 0 0 0 rgba(0,0,0,0); }
+            60%  { transform: scale(1.03); box-shadow: 0 12px 20px rgba(0,0,0,0.2); }
+            100% { transform: scale(1); box-shadow: 0 8px 15px rgba(0,0,0,0.15); }
+        }
+        .pop-success {
+            animation: pop 0.4s ease-out;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="verifyBox">
+    {% if valid %}
+        <p class="success">✔ Ticket Verified</p>
+        <ul>
+        {% for key,val in data.items() %}
+            <li><strong>{{key}}:</strong> {{val}}</li>
+        {% endfor %}
+        </ul>
+
+        <!-- 🔳 QR code image -->
+        <div style="margin-top: 15px;">
+            <img
+              src="{{ url_for('static', filename='qr/' + data['Ticket Number'] + '.png') }}"
+              alt="Ticket QR Code"
+              width="180">
+        </div>
+
+    {% else %}
+        <p class="fail">❌ Invalid or Fake Ticket</p>
+        <p>Ticket Number: {{ticket}}</p>
+    {% endif %}
+
+    <br>
+    <a href="/"><button>Back to Home</button></a>
+</div>
+
+
+<!-- 🔊 Sounds (put these files in /static folder) -->
+<audio id="successSound">
+    <source src="{{ url_for('static', filename='success.mp3') }}" type="audio/mpeg">
+</audio>
+<audio id="errorSound">
+    <source src="{{ url_for('static', filename='error.mp3') }}" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const box = document.getElementById('verifyBox');
+    const isValid = {{ 'true' if valid else 'false' }};
+
+    console.log("VALID STATUS:", isValid);
+
+    if (isValid) {
+        // Success animation + sound
+        box.classList.add('pop-success');
+        const s = document.getElementById('successSound');
+        s && s.play().catch(() => {});
+    } else {
+        // Error animation + sound + alert
+        box.classList.add('shake-error');
+        const e = document.getElementById('errorSound');
+        e && e.play().catch(() => {});
+        alert("❌ Invalid Ticket! Please check again.");
+    }
+});
+</script>
+
+
+
+</body>
+</html>

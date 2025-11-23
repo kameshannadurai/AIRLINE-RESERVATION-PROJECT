@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ type }} Registered Successfully</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='success.css') }}">
+</head>
+<body>
+<div class="nice">
+<div class="container">
+  <h1>{{ type }} Registered Successfully!</h1>
+  <h2>Details:</h2>
+  <ul>
+    {% for key, value in data.items() %}
+      <li><strong>{{ key }}:</strong> {{ value }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{{ url_for('index') }}"><button>Back to Home</button></a>
+</div>
+</div>
+</body>
+</html>

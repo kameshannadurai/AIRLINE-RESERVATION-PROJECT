@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Error</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='error.css') }}">
+</head>
+<body>
+<div class="lo">
+<div class="container">
+  <h1 style="color:red;">Error!</h1>
+  <p>{{ message }}</p>
+  <a href="{{ url_for('index') }}"><button>Back to Home</button></a>
+</div>
+</div>
+</body>
+</html>
