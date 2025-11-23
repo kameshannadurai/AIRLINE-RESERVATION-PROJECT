@@ -285,6 +285,12 @@ def add_plane():
 
 # ---------------- Main ---------------- #
 
+# ---------------- Main ---------------- #
+
+# Run DB migrations / create tables when the app is imported (Render + gunicorn)
+init_db()
+
 if __name__ == "__main__":
-    init_db()
+    # For local development only
     app.run(debug=True)
+
